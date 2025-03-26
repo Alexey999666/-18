@@ -1,0 +1,144 @@
+﻿<Window x:Class="Практическая_номер_18.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Практическая_номер_18"
+        mc:Ignorable="d"
+        Title="Session" Height="800" Width="1100" Loaded="Windows_Loaded" Cursor="C:\Users\исп-31\Desktop\Андрианов практос 18\Практическая номер 18\Практическая номер 18\Cursor\волщебная палочка.ani" >
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#A020F0" Offset="0.0" />
+
+                <GradientStop Color="#800080" Offset="0.5" />
+
+                <GradientStop Color="#483D8B" Offset="1.0" />
+
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="396*"/>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="115"/>
+            <RowDefinition Height="159*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" VerticalAlignment="Top" Background="#03261C" Foreground="#388AC8"  BorderBrush="#1533AD">
+            <MenuItem Header="Файл" Background="#03261C" Foreground="#388AC8" BorderBrush="#1533AD">
+                <MenuItem Header="Выйти" Click="btnExit_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#1533AD"/>
+            </MenuItem>
+            <MenuItem Header="Действия"  Background="#03261C" Foreground="#388AC8" BorderBrush="#1533AD">
+                <MenuItem   Header="Добавить запись" Click="btnAddEntry"  Background="#03261C" Foreground="#388AC8" BorderBrush="#1533AD" OpacityMask="#FFE61616"/>
+                <MenuItem   Header="Редактировать запись" Click="btnEdit_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#1533AD"/>
+                <MenuItem   Header="Просмотреть запись" Click="btnViewing_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#1533AD"/>
+                <MenuItem   Header="Удалить запись" Click="btnDelete_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#1533AD"/>
+            </MenuItem>
+            <MenuItem Header="Справка" Background="#03261C" Foreground="#388AC8" BorderBrush="#1533AD">
+                <MenuItem Header="О программе" Click="btnInfo_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#1533AD"/>
+                <MenuItem Header="Разработчик" Click="btnDeveloper_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#1533AD"/>
+                <MenuItem Header="О запросах" Click="btnRequestInfo_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#1533AD"/>
+            </MenuItem>
+        </Menu>
+        <DataGrid x:Name="DGDataBase" IsReadOnly="True" Margin="0,25,0,7" Grid.RowSpan="2"  Foreground="#FF6F00" HeadersVisibility="Column" GridLinesVisibility="All" RowBackground="#8403E7"  AlternatingRowBackground="#E7003E" HorizontalGridLinesBrush="#00D7FF"  VerticalGridLinesBrush="#FFEB40">
+            <DataGrid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#A020F0" Offset="0.0" />
+
+                    <GradientStop Color="#800080" Offset="0.5" />
+
+                    <GradientStop Color="#483D8B" Offset="1.0" />
+
+                </LinearGradientBrush>
+            </DataGrid.Background>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="	#F83EAB"/>
+                    <Setter Property="Foreground" Value="#1B0297"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,5,0,0">
+            <Button Height="30" Width="160" VerticalAlignment="Top" Margin="20" Content="Добавить запись" Click="btnAddEntry" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            <Button Height="30" Width="160" VerticalAlignment="Top" Margin="20" Content="Редактировать запись" Click="btnEdit_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            <Button Height="30" Width="160" VerticalAlignment="Top" Margin="20" Content="Просмотреть запись" Click="btnViewing_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            <Button Height="30" Width="160" VerticalAlignment="Top" Margin="20" Content="Удалить запись" Click="btnDelete_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            <Button Height="30" Width="160" VerticalAlignment="Top" Margin="20" Content="Очистить" ToolTip="Очистить значения во всех TextBox" Click="btnClear_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="0,3,0,0" >
+            <StackPanel Margin="5">
+                <Label Content="Фильтр по полу" HorizontalContentAlignment="Center" Margin="5" Width="210" Foreground="#388AC8"/>
+                <TextBox TextWrapping="Wrap" x:Name="tbFiltr1" Margin="5" Width="210"  Height="20" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+                <Button Content="Фильтр" Margin="5" Height="20" Click="btnFiltered1_Click" Width="210" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            </StackPanel>
+            <StackPanel Margin="5" >
+                <Label Content="Фильтр по семейному положению" HorizontalContentAlignment="Center" Margin="5" Width="210"  Foreground="#388AC8"/>
+                <TextBox TextWrapping="Wrap" x:Name="tbFiltr2" Margin="5" Width="210"  Height="20" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+                <Button Content="Фильтр" Margin="5" Height="20" Click="btnFiltered2_Click" Width="210" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            </StackPanel>
+            <StackPanel Margin="5" >
+                <Label Content="Поиск по фамилии" Margin="5" HorizontalContentAlignment="Center" Width="210" Foreground="#388AC8"/>
+                <TextBox TextWrapping="Wrap" x:Name="tbPoisk" Margin="5" Height="20"  Width="210" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+                <Button Content="Поиск" Margin="5" Height="20" Click="btnFind_Click" Width="210" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"  Grid.Row="5">
+            <StackPanel Margin="10">
+                <Label Content="Запрос 1" HorizontalContentAlignment="Center"  Foreground="#388AC8"/>
+
+                <ComboBox x:Name="cbGen" Foreground="#0A64A4" Background="#FF0A3B2C" BorderBrush="#FF7DE8E8" >
+                    <ComboBoxItem Content="Мужской" />
+                    <ComboBoxItem Content="Женский" />
+                </ComboBox>
+                <Button Content="Найти" Click="btnGenderFind_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Label Content="Запрос 2" HorizontalContentAlignment="Center"  Foreground="#388AC8"/>
+                <TextBox x:Name="tbnNameFind" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+
+                <Button Content="Найти" Click="btnNFind_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Label Content="Запрос 3" HorizontalContentAlignment="Center"  Foreground="#388AC8"/>
+                <TextBox x:Name="tbGradeAll" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+
+                <Button Content="Найти" Click="btALLGrade_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Label Content="Запрос 4" HorizontalContentAlignment="Center"  Foreground="#388AC8"/>
+                
+
+                <Button Content="Найти" Click="btNULLPatronic_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Label Content="Запрос 5" HorizontalContentAlignment="Center"  Foreground="#388AC8"/>
+                <TextBox x:Name="tbCOUNTgrade" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+                <TextBox x:Name="tbIDforCount" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+                <Button Content="Найти" Click="btCOGrade_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Label Content="Запрос 6" HorizontalContentAlignment="Center"  Foreground="#388AC8"/>
+                <TextBox x:Name="tbfamUpgrde" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+                <TextBox x:Name="tbIDforUpd" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+                <Button Content="Обновить" Click="btnFUpgrde_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            </StackPanel>
+            
+            <StackPanel Margin="10">
+                <Label Content="Запрос 7" HorizontalContentAlignment="Center"  Foreground="#388AC8"/>
+                <TextBox x:Name="tbCompUpgrde" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+                <TextBox x:Name="tbIDforUpdExam" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+                <Button Content="Обновить" Click="btnCUpgrde_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            </StackPanel>
+
+
+            <StackPanel Margin="10">
+                <Label Content="Запрос 8" HorizontalContentAlignment="Center"  Foreground="#388AC8"/>
+                <TextBox x:Name="tbIDDel" Background="#0A3B2C"  Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8" />
+                <Button Content="Удалить" Click="btnDeleteID_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
