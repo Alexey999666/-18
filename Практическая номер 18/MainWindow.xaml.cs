@@ -32,7 +32,7 @@ namespace Практическая_номер_18
 
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Учет изделий, собранных в цехе за неделю. База данных должна содержать следующую \r\nинформацию: фамилию, имя, отчество сборщика, количество изготовленных изделий за \r\nкаждый день недели раздельно, название цеха, а также тип изделия и его стоимость.\r\n", "Задание", MessageBoxButton.OK, MessageBoxImage.Question);
+            MessageBox.Show("Результаты сессии на первом курсе кафедры ВТ. База данных должна содержать следующую информацию: индекс группы, фамилию, имя, отчество студента, пол студента, семейное положение и оценки по пяти экзаменам.", "Задание", MessageBoxButton.OK, MessageBoxImage.Question);
         }
 
         private void btnDeveloper_Click(object sender, RoutedEventArgs e)
@@ -41,7 +41,7 @@ namespace Практическая_номер_18
         }
         private void btnRequestInfo_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("", "Запросы", MessageBoxButton.OK, MessageBoxImage.Question);
+            MessageBox.Show("Запрос 1 Находит студентов по полу 'Мужской' или 'Женский'\r\nЗапрос 2 Находит имена по первой букве\r\nЗапрос 3 Находит людей у которых по всем предметам одинаковые оценки\r\nЗапрос 4 Находит людей без отчества\r\nЗапрос 5 Определяет есть ли у выбраного по id студента искомая оценка, если нет то таблица будет пустой\r\nЗапрос 6 Обновление фамилии выбраного по id студента на ту которую указывает пользователь\r\nЗапрос 7 Обновление оценки выбраного по id студента по информатике на веденную пользователемм\r\nЗапрос 8 Удаление студента по id", "Запросы", MessageBoxButton.OK, MessageBoxImage.Question);
         }
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
@@ -54,8 +54,8 @@ namespace Практическая_номер_18
             tbIDforUpd.Clear();
             tbnNameFind.Clear();
             tbCompUpgrde.Clear();
-            tbCOUNTgrade.Clear();
-            tbIDforCount.Clear();
+            tbFindgrade.Clear();
+            tbIDforFind.Clear();
             tbIDforUpdExam.Clear();
         }
         private void Windows_Loaded(object sender, RoutedEventArgs e)
@@ -86,7 +86,7 @@ namespace Практическая_номер_18
             f.Owner = this;
             f.ShowDialog();
             LoudDataBaseDG();
-           
+
 
         }
 
@@ -100,7 +100,7 @@ namespace Практическая_номер_18
                 f.Owner = this;
                 f.ShowDialog();
                 LoudDataBaseDG();
-                
+
             }
         }
 
@@ -187,17 +187,17 @@ namespace Практическая_номер_18
                 f.Owner = this;
                 f.ShowDialog();
                 LoudDataBaseDG();
-                
+
             }
         }
 
         private void btnGenderFind_Click(object sender, RoutedEventArgs e)
         {
-            using(SessionContext _db = new SessionContext())
+            using (SessionContext _db = new SessionContext())
             {
 
                 String? gender = cbGen.Text;
-               
+
                 var gen = _db.SessionFirstCourseBts.FromSql($"Select * From SessionFirstCourseBt where Gender = {gender}");
                 DGDataBase.ItemsSource = gen.ToList();
             }
@@ -207,9 +207,13 @@ namespace Практическая_номер_18
         {
             using (SessionContext _db = new SessionContext())
             {
-                String id = tbIDDel.Text;
-                int Index = _db.Database.ExecuteSql($"Delete FROM SessionFirstCourseBt where IndexGroup = {id}");
-               
+                if (int.TryParse(tbIDDel.Text, out int ID))
+                {
+                    int id = ID;
+                    int Index = _db.Database.ExecuteSql($"Delete FROM SessionFirstCourseBt where IndexGroup = {id}");
+                }
+                else MessageBox.Show("Некоректные значения", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
         }
 
@@ -217,9 +221,13 @@ namespace Практическая_номер_18
         {
             using (SessionContext _db = new SessionContext())
             {
-                String famil = tbfamUpgrde.Text;
-                String id = tbIDforUpd.Text;
-                var FAM = _db.Database.ExecuteSql($"Update SessionFirstCourseBt set Lastname = {famil} where IndexGroup = {id}");
+                if (int.TryParse(tbIDforUpd.Text, out int ID))
+                {
+                    String famil = tbfamUpgrde.Text;
+                    int id = ID;
+                    var FAM = _db.Database.ExecuteSql($"Update SessionFirstCourseBt set Lastname = {famil} where IndexGroup = {id}");
+                }
+                else MessageBox.Show("Некоректные значения", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -237,9 +245,13 @@ namespace Практическая_номер_18
         {
             using (SessionContext _db = new SessionContext())
             {
-                String grade = tbGradeAll.Text;
-                var ALL = _db.SessionFirstCourseBts.FromSql($"SELECT * FROM SessionFirstCourseBt WHERE MathGrade = {grade} AND ComputerScienceGrade = {grade} AND HistoryGrade = {grade} AND PhysicalEducationGrade = {grade} AND LiteratureGrade = {grade}");
-                DGDataBase.ItemsSource = ALL.ToList();
+                if (int.TryParse(tbGradeAll.Text, out int all) && all > 1 && all < 6)
+                {
+                    int grade = all;
+                    var ALL = _db.SessionFirstCourseBts.FromSql($"SELECT * FROM SessionFirstCourseBt WHERE MathGrade = {grade} AND ComputerScienceGrade = {grade} AND HistoryGrade = {grade} AND PhysicalEducationGrade = {grade} AND LiteratureGrade = {grade}");
+                    DGDataBase.ItemsSource = ALL.ToList();
+                }
+                else MessageBox.Show("Некоректные значения", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -247,20 +259,24 @@ namespace Практическая_номер_18
         {
             using (SessionContext _db = new SessionContext())
             {
-                
+
                 var NULLPAT = _db.SessionFirstCourseBts.FromSql($"SELECT * FROM SessionFirstCourseBt WHERE Middlename IS NULL");
                 DGDataBase.ItemsSource = NULLPAT.ToList();
             }
         }
 
-        private void btCOGrade_Click(object sender, RoutedEventArgs e)
+        private void btFiGrade_Click(object sender, RoutedEventArgs e)
         {
             using (SessionContext _db = new SessionContext())
             {
-                String gr = tbCOUNTgrade.Text;
-                String id = tbIDforCount.Text;
-                var IDGRADE = _db.SessionFirstCourseBts.FromSql($" SELECT * FROM SessionFirstCourseBt WHERE IndexGroup = {id} AND (MathGrade = {gr} OR ComputerScienceGrade = {gr} OR HistoryGrade = {gr} Or PhysicalEducationGrade = {gr} Or LiteratureGrade = {gr})  ");
-                DGDataBase.ItemsSource = IDGRADE.ToList();
+                if (int.TryParse(tbIDforFind.Text, out int ID) && int.TryParse(tbFindgrade.Text, out int GR) && GR > 1 && GR<6 )
+                {
+                    int gr = GR;
+                    int id = ID;
+                    var IDGRADE = _db.SessionFirstCourseBts.FromSql($" SELECT * FROM SessionFirstCourseBt WHERE IndexGroup = {id} AND (MathGrade = {gr} OR ComputerScienceGrade = {gr} OR HistoryGrade = {gr} Or PhysicalEducationGrade = {gr} Or LiteratureGrade = {gr})  ");
+                    DGDataBase.ItemsSource = IDGRADE.ToList();
+                }
+                else MessageBox.Show("Некоректные значения", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -268,10 +284,22 @@ namespace Практическая_номер_18
         {
             using (SessionContext _db = new SessionContext())
             {
-                String Comp = tbCompUpgrde.Text;
-                String id = tbIDforUpdExam.Text;
-                var COMPUPD = _db.Database.ExecuteSql($"Update SessionFirstCourseBt set ComputerScienceGrade = {Comp} where IndexGroup = {id}");
+                if (int.TryParse(tbIDforUpdExam.Text, out int ID) && int.TryParse(tbCompUpgrde.Text, out int CoUp) && CoUp > 1 && CoUp<6)
+                {
+                    int Comp = CoUp;
+                    int id = ID;
+                    var COMPUPD = _db.Database.ExecuteSql($"Update SessionFirstCourseBt set ComputerScienceGrade = {Comp} where IndexGroup = {id}");
+                }
+                else MessageBox.Show("Некоректные значения", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            Entry E = new Entry();
+            E.ShowDialog();
+            if (DataBaseSession.Login == false) Close();
+
         }
     }
 }

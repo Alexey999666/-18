@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Практическая_номер_18"
         mc:Ignorable="d"
-        Title="Session" Height="800" Width="1100" Loaded="Windows_Loaded" Cursor="C:\Users\исп-31\Desktop\Андрианов практос 18\Практическая номер 18\Практическая номер 18\Cursor\волщебная палочка.ani" >
+        Title="Session" Height="800" Width="1100" Loaded="Windows_Loaded" WindowStartupLocation="CenterScreen" Initialized="Window_Initialized" Cursor="C:\Users\исп-31\Desktop\Андрианов практос 18\Практическая номер 18\Практическая номер 18\Cursor\волщебная палочка.ani" >
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -115,9 +115,9 @@
             </StackPanel>
             <StackPanel Margin="10">
                 <Label Content="Запрос 5" HorizontalContentAlignment="Center"  Foreground="#388AC8"/>
-                <TextBox x:Name="tbCOUNTgrade" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
-                <TextBox x:Name="tbIDforCount" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
-                <Button Content="Найти" Click="btCOGrade_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
+                <TextBox x:Name="tbFindgrade" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+                <TextBox x:Name="tbIDforFind" Background="#0A3B2C" Foreground="#FF0B8EEC" BorderBrush="#FF7DE8E8"/>
+                <Button Content="Найти" Click="btFiGrade_Click" Background="#03261C" Foreground="#388AC8" BorderBrush="#FF7DE8E8"/>
             </StackPanel>
             <StackPanel Margin="10">
                 <Label Content="Запрос 6" HorizontalContentAlignment="Center"  Foreground="#388AC8"/>
