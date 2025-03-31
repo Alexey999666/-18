@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Cursor\волщебная палочка.ani" />
+    <None Remove="Cursor\магическийжезл.cur" />
+    <None Remove="Cursor\сакура.ani" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.3">
@@ -19,8 +25,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Cursor\" />
     <Folder Include="Image\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Cursor\волщебная палочка.ani">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Cursor\магическийжезл.cur" />
+    <Resource Include="Cursor\сакура.ani">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="магический_жезл.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

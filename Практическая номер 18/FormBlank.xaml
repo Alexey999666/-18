@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Практическая_номер_18"
         mc:Ignorable="d"
-        Title="FormBlank" Height="600" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Loaded="WindowBlankLoaded" x:Name="TheFormBlank" Cursor="C:\Users\исп-31\Desktop\Андрианов практос 18\Практическая номер 18\Практическая номер 18\Cursor\сакура.ani">
+        Title="FormBlank" Height="600" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Loaded="WindowBlankLoaded" x:Name="TheFormBlank"   >
+    
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="C:\Users\исп-31\Desktop\Андрианов практос 18\Практическая номер 18\Практическая номер 18\Image\70ae18e3d511fb830f4541066328703b.jpg"/>
@@ -16,45 +17,45 @@
         </Grid.RowDefinitions>
         <StackPanel>
 
-            <TextBlock Margin="5,5,5,0"  Foreground="Aqua" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Фамилия" TextWrapping="Wrap"   />
-            <TextBox Margin="5,0,5,5" Background="AliceBlue" Foreground="Aqua" TextWrapping="Wrap" x:Name="tbLastName"  Text="{Binding Path=Lastname}" />
+            <TextBlock Margin="5,5,5,0"  Foreground="Red" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Фамилия" TextWrapping="Wrap"   />
+            <TextBox Margin="5,0,5,5" Background="Transparent" Foreground="Red" TextWrapping="Wrap" x:Name="tbLastName"  Text="{Binding Path=Lastname}" />
 
-            <TextBlock Margin="5,5,5,0"  Foreground="Aqua" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Имя" TextWrapping="Wrap"   />
-            <TextBox Margin="5,0,5,5" Background="AliceBlue" Foreground="Aqua" TextWrapping="Wrap" x:Name="tbFirstName" Text="{Binding Path=Firstname}" />
+            <TextBlock Margin="5,5,5,0"  Background="Transparent" Foreground="Red" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Имя" TextWrapping="Wrap"   />
+            <TextBox Margin="5,0,5,5" Background="Transparent" Foreground="Red" TextWrapping="Wrap" x:Name="tbFirstName" Text="{Binding Path=Firstname}" />
 
-            <TextBlock Margin="5,5,5,0"  Foreground="Aqua" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Отчество" TextWrapping="Wrap"   />
-            <TextBox Margin="5,0,5,5" Background="AliceBlue" Foreground="Aqua" TextWrapping="Wrap" x:Name="tbSureName" Text="{Binding Path=Middlename}" />
+            <TextBlock Margin="5,5,5,0"  Background="Transparent" Foreground="Red" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Отчество" TextWrapping="Wrap"   />
+            <TextBox Margin="5,0,5,5" Background="Transparent" Foreground="Red" TextWrapping="Wrap" x:Name="tbSureName" Text="{Binding Path=Middlename}" />
 
-            <TextBlock Margin="5,5,5,0"   Foreground="Aqua" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Пол" TextWrapping="Wrap"   />
-            <ComboBox x:Name="tbGen" Text="{Binding Path=Gender}" Margin="5">
-                <ComboBoxItem Content="Мужской"/>
-                <ComboBoxItem Content="Женский"/>
+            <TextBlock Margin="5,5,5,0"   Background="Transparent" Foreground="Red"  FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Пол" TextWrapping="Wrap"   />
+            <ComboBox x:Name="tbGen" Text="{Binding Path=Gender}" Margin="5" Background="Transparent" Foreground="Red" >
+                <ComboBoxItem Content="Мужской" Background="Transparent" Foreground="Red"/>
+                <ComboBoxItem Content="Женский" Background="Transparent" Foreground="Red"/>
                 
             </ComboBox>
 
-            <TextBlock Margin="5,5,5,0"  Foreground="Aqua" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Семейный статус" TextWrapping="Wrap"   />
-            <ComboBox Name="tbtatus" Text="{Binding Path=FamilyStatus}" Margin="5">
-                <ComboBoxItem Content="Не состоит в браке"/>
-                <ComboBoxItem Content="Состоит в браке"/>
-                <ComboBoxItem Content="Разведен/Разведена"/>
+            <TextBlock Margin="5,5,5,0"  Background="Transparent" Foreground="Red"  FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Семейный статус" TextWrapping="Wrap"   />
+            <ComboBox Name="tbtatus" Text="{Binding Path=FamilyStatus}" Margin="5" Background="Transparent" Foreground="Red" >
+                <ComboBoxItem Content="Не состоит в браке" Background="Transparent" Foreground="Red"/>
+                <ComboBoxItem Content="Состоит в браке" Background="Transparent" Foreground="Red"/>
+                <ComboBoxItem Content="Разведен/Разведена" Background="Transparent" Foreground="Red"/>
                 
 
             </ComboBox>
 
-            <TextBlock Margin="5,5,5,0"  Foreground="Aqua" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Оценка по математике" TextWrapping="Wrap"   />
-            <TextBox Margin="5,0,5,5" Background="AliceBlue" Foreground="Aqua" TextWrapping="Wrap" x:Name="tbMath" Text="{Binding Path=MathGrade}" />
+            <TextBlock Margin="5,5,5,0"  Background="Transparent" Foreground="Red" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Оценка по математике" TextWrapping="Wrap"   />
+            <TextBox Margin="5,0,5,5" Background="Transparent" Foreground="Red" TextWrapping="Wrap" x:Name="tbMath" Text="{Binding Path=MathGrade}" />
 
-            <TextBlock Margin="5,5,5,0"  Foreground="Aqua" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Оценка по информатике" TextWrapping="Wrap"   />
-            <TextBox Margin="5,0,5,5" Background="AliceBlue" Foreground="Aqua" TextWrapping="Wrap"  x:Name="tbComputer" Text="{Binding Path=ComputerScienceGrade}"/>
+            <TextBlock Margin="5,5,5,0"  Background="Transparent" Foreground="Red" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Оценка по информатике" TextWrapping="Wrap"   />
+            <TextBox Margin="5,0,5,5" Background="Transparent" Foreground="Red" TextWrapping="Wrap"  x:Name="tbComputer" Text="{Binding Path=ComputerScienceGrade}"/>
 
-            <TextBlock Margin="5,5,5,0"  Foreground="Aqua" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Оценка по истории" TextWrapping="Wrap"   />
-            <TextBox Margin="5,0,5,5" Background="AliceBlue" Foreground="Aqua" TextWrapping="Wrap" x:Name="tbHistory" Text="{Binding Path=HistoryGrade}" />
+            <TextBlock Margin="5,5,5,0"  Background="Transparent" Foreground="Red" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Оценка по истории" TextWrapping="Wrap"   />
+            <TextBox Margin="5,0,5,5" Background="Transparent" Foreground="Red" TextWrapping="Wrap" x:Name="tbHistory" Text="{Binding Path=HistoryGrade}" />
 
-            <TextBlock Margin="5,5,5,0"  Foreground="Aqua" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Оценка по физкультуре" TextWrapping="Wrap"   />
-            <TextBox Margin="5,0,5,5" Background="AliceBlue" Foreground="Aqua" TextWrapping="Wrap" x:Name="tbPhysical"  Text="{Binding Path=PhysicalEducationGrade}"/>
+            <TextBlock Margin="5,5,5,0"  Background="Transparent" Foreground="Red" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Оценка по физкультуре" TextWrapping="Wrap"   />
+            <TextBox Margin="5,0,5,5" Background="Transparent" Foreground="Red" TextWrapping="Wrap" x:Name="tbPhysical"  Text="{Binding Path=PhysicalEducationGrade}"/>
 
-            <TextBlock Margin="5,5,5,0"  Foreground="Aqua" FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Оценка по литературе" TextWrapping="Wrap"   />
-            <TextBox Margin="5,0,5,5" Background="AliceBlue" Foreground="Aqua" TextWrapping="Wrap" x:Name="tbLiterature" Text="{Binding Path=LiteratureGrade}"/>
+            <TextBlock Margin="5,5,5,0" Background="Transparent" Foreground="Red"  FontSize="10" Opacity="1" FontWeight="Black" FontStretch="Condensed" Text="Оценка по литературе" TextWrapping="Wrap"   />
+            <TextBox Margin="5,0,5,5" Background="Transparent" Foreground="Red" TextWrapping="Wrap" x:Name="tbLiterature" Text="{Binding Path=LiteratureGrade}"/>
 
 
 
@@ -64,10 +65,10 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,13,0,0">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="140,0,120,0">
-                <Button Content="Добавить" Width="100" Height="30"  x:Name="btnFormAdd"  Click="btnFormAdd_Click" />
+                <Button Content="Добавить" Width="100" Height="30"  x:Name="btnFormAdd"  Click="btnFormAdd_Click" Background="Transparent" Foreground="red"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Width="100" Height="30" Content="Отмена"  Click="btnCancel_Click"/>
+                <Button Width="100" Height="30" Content="Отмена"  Click="btnCancel_Click" Background="Transparent" Foreground="Red"/>
             </StackPanel>
             
             

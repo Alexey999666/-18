@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Resources;
 using System.Windows.Shapes;
 using Практическая_номер_18.ModelsDB;
 
@@ -60,6 +61,9 @@ namespace Практическая_номер_18
         }
         private void Windows_Loaded(object sender, RoutedEventArgs e)
         {
+            StreamResourceInfo cur = Application.GetResourceStream(new Uri("/Cursor/волщебная палочка.ani", UriKind.Relative));
+            Cursor customCursor = new Cursor(cur.Stream);
+            this.Cursor = customCursor;
             LoudDataBaseDG();
         }
         void LoudDataBaseDG()
@@ -299,6 +303,50 @@ namespace Практическая_номер_18
             Entry E = new Entry();
             E.ShowDialog();
             if (DataBaseSession.Login == false) Close();
+            if (DataBaseSession.Right == "Администратор")
+            {
+
+            }
+            else if (DataBaseSession.Right == "Менеджер")
+            {
+                btnADD.IsEnabled = false;
+                btnEdit.IsEnabled = false;
+                ZP8.IsEnabled = false;
+                btnDelete.IsEnabled = false;
+
+            }
+            else if (DataBaseSession.Right == "Зарегестрированный пользователь")
+            {
+                btnADD.IsEnabled = false;
+                btnEdit.IsEnabled = false;
+                ZP1.IsEnabled = true;
+                ZP2.IsEnabled = true;
+                ZP3.IsEnabled = true;
+                ZP4.IsEnabled = true;
+                ZP5.IsEnabled = true;
+                ZP6.IsEnabled = false;
+                ZP7.IsEnabled = false;
+                ZP8.IsEnabled = false;
+                btnDelete.IsEnabled = false;
+            }
+            else
+            {
+                btnADD.IsEnabled = false;
+                btnEdit.IsEnabled = false;
+                btnFilt1.IsEnabled = false;
+                btnFilt2.IsEnabled = false; 
+                btnFind.IsEnabled = false;
+                ZP1.IsEnabled = false;
+                ZP2.IsEnabled = false;
+                ZP3.IsEnabled = false;
+                ZP4.IsEnabled = false;
+                ZP5.IsEnabled = false;
+                ZP6.IsEnabled = false;
+                ZP7.IsEnabled = false;
+                ZP8.IsEnabled = false;
+                btnDelete.IsEnabled = false;
+            }
+            mainWindow.Title = mainWindow.Title + " " + DataBaseSession.UserSurname + " " + DataBaseSession.UserName + " " + DataBaseSession.UserPatronymic + " (" + DataBaseSession.Right + ")"; 
 
         }
     }

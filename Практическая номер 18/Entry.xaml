@@ -5,12 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Практическая_номер_18"
         mc:Ignorable="d"
-        Title="Авторизация" Height="600" Width="400" FontSize="20" ResizeMode="CanMinimize" SizeToContent="Height" WindowStartupLocation="CenterScreen" Activated="Window_Activated">
+        Title="Авторизация" Height="400" Width="400" FontSize="20" ResizeMode="CanMinimize" SizeToContent="Height" WindowStartupLocation="CenterScreen" Activated="Window_Activated">
     <Grid>
-        <StackPanel x:Name="SPentry">
+        <StackPanel x:Name="SPenel">
             <Label Content="Пользователь" />
-            <TextBox />
-
+            <TextBox x:Name="tbLogin" />
+            <Label Content="Пароль" />
+            <PasswordBox x:Name="tbPas" PasswordChar="*" />
+            <Grid x:Name="grid" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="txtCaprcha" Background="Gray" FontSize="28" Grid.Row="0" TextAlignment="Center"/>
+                <Line x:Name="line" Grid.Row="0" Stroke="Black"/>
+                <TextBox x:Name="tbCaptcha" Grid.Row="1"/>
+            </Grid>
+            <Button Content="Войти" IsDefault="True" Click="btnEnter_Click"/>
+            <Button Content="Отмена" IsCancel="True" Click="btnEsc_Click"/>
+            <Button Content="Войти как гость" Click="btnGuest_Click"/>
         </StackPanel> 
     </Grid>
 </Window>

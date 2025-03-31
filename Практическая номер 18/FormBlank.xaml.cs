@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Resources;
 using System.Windows.Shapes;
 using Практическая_номер_18.ModelsDB;
 
@@ -29,6 +30,9 @@ namespace Практическая_номер_18
         
         private void WindowBlankLoaded(object sender, RoutedEventArgs e)
         {
+            StreamResourceInfo cur = Application.GetResourceStream(new Uri("/Cursor/сакура.ani", UriKind.Relative));
+            Cursor customCursor = new Cursor(cur.Stream);
+            this.Cursor = customCursor;
             if (DataBaseSession.sessionFirstCourseBt == null && FlagsForForm.FlagAdd == true)
             {
 
